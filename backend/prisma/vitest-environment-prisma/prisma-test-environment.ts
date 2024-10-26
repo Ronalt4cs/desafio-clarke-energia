@@ -25,12 +25,10 @@ export default <Environment>{
 
     process.env.DATABASE_URL = dbURL
 
-    // Executa as migrações para o esquema temporário
     execSync('npx prisma migrate deploy')
 
     return {
       async teardown() {
-        // Apaga o esquema temporário após os testes
         await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`)
         await prisma.$disconnect()
       }
