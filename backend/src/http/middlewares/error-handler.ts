@@ -1,10 +1,17 @@
-import { env } from "@/env"
-import { FastifyReply, FastifyRequest } from "fastify"
-import { ZodError } from "zod"
+import { env } from '@/env'
+import { InvalidConsumptionValueError } from '@/services/errors/invalidate-consumption-value-error'
+import { FastifyReply, FastifyRequest } from 'fastify'
+import { ZodError } from 'zod'
 
 export function errorHandler(error: Error, _: FastifyRequest, reply: FastifyReply) {
   if (error instanceof ZodError) {
+    console.log('error handler =======>', error);
+
     return reply.status(400).send({ message: 'Erro de validação', issues: error.format() })
+  }
+
+  if (error instanceof InvalidConsumptionValueError) {
+    return reply.status(400).send({ messge: error.message })
   }
 
   if (env.NODE_ENV !== 'production') {
