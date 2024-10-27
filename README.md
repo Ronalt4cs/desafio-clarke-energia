@@ -12,27 +12,97 @@ SPA de escolha de fornecedor. Os usuários poderão informar o seu consumo de en
 
 * Um fornecedor só pode atender um cliente caso o consumo mensal de energia deste seja maior do que o limite mínimo de kWh do fornecedor
 
-# Requisitos Técnicos:
+# Links do projeto online
 
-* O frontend deve ser feito em React
+> Backend: https://desafio-clarke-energia.onrender.com 
 
-* O backend deve ser feito em Python ou NodeJs
+> Frontend: https://desafio-clarke-energia-beta.vercel.app/
 
-# Entrega Final
+# Rodando localmente
 
-Você deverá enviar um email para `victor@clarke.com.br` com o seguinte título: `Desafio Clarke Energia | <Seu Nome>`. No email, você deve fornecer 2 links, são eles:
+## Clone o projeto
 
-- Link para o repositório principal do projeto (você pode compartilhar a visibilidade do projeto com o usuário victor@clarke.com.br no Github)
-- Link para o projeto disponível online. Aqui recomendamos usar serivços como Netlify/Vercel para hospedar o seu frontend e backend. Sinta-se livre para usar outras plataformas que tenham o mesmo serviço.
+```bash
+  git clone git@github.com:Ronalt4cs/desafio-clarke-energia.git
+```
 
-# Diferenciais
+## Variáveis de Ambiente
 
-*Os itens a seguir não são obrigatórios. Lembre-se que o principal diferencial é o desafio ser entregue.* Os candidatos terão uma avaliação melhor se:
+#### Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
-* A aplicação for integrada com Graphql
+```bash
+# Backend
 
-* O frontend tiver testes automatizados com Jest ou Cypress
+  DATABASE_URL="postgresql://docker:docker@localhost:5433/api-clarke"
+  NODE_ENV
+  PORT
 
-* O backend tiver testes automatizados
+# Frontend
 
-* Os arquivos para que a aplicação funcione no Docker estiverem configurados
+  API_URL
+
+```
+
+## Entre no diretório do projeto
+
+```bash
+  cd my-project/backend
+```
+
+## Instale as dependências 
+
+```bash
+  npm install
+```
+
+## Rode a imagem do docker
+
+```bash
+  docker-compose up -d
+```
+
+## Instale as migration do prisma
+
+```bash
+  npx prisma migrate dev
+```
+
+## Rodando a seed do banco de dados
+
+```bash
+  npx prisma db seed
+```
+## Inicie o servidor
+
+```bash
+  npm run dev
+```
+## Rodando os testes
+
+```bash
+  npm run test:watch
+```
+
+## Rodando o frontend
+
+Entre no diretório do projeto
+
+```bash
+  cd my-project/front
+```
+
+## Instale as dependências 
+
+```bash
+  npm install
+```
+
+## Inicie o servidor
+
+```bash
+  npm run dev
+```
+
+## Stack utilizada
+
+Node, Fastify, Prisma, Vitest, Docker, NextJs
