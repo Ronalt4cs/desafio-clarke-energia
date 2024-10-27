@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const fetchSupliersByConsumptionParamsSchema = z.object({
   consumption: z
     .string()
-    .transform((val) => parseFloat(val)) // Transforma o valor da string para número
+    .transform((val) => parseFloat(val))
     .refine((val) => !isNaN(val) && val > 0, {
       message: 'Consumption must be a positive number',
     }),
